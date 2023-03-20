@@ -2,18 +2,24 @@
 name: dev-build-and-deploy
 # Run workflow only on push to dev branch
 on: 
-  workflow_call:
+  workflow_dispatch:
     inputs: 
       bucket_name:
         required: true
         type: string
-         
-    secrets:
-      AWS_ACCESS_KEY:
-        required: true
 
-      AWS_SECRET_ACCESS:
-        required: true
+      jar_file_name:
+        reruired: true
+        type: string
+
+      
+         
+    # secrets:
+    #   AWS_ACCESS_KEY:
+    #     required: true
+
+    #   AWS_SECRET_ACCESS:
+    #     required: true
 
     
      
@@ -24,15 +30,12 @@ jobs:
     steps:
       - name: Checking out code
         uses: actions/checkout@v3
-      - name: Installing Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "16"
-      - name: Installing dependencies
-        uses: sarvesh5012/hello-composite-actions/npm_run@main
+      
+        # Installing Maven 
+      - name: Installing dependencies for maven
+        uses: virtuecloud/Composite-actions/mvntest@java
         
-#       - name: Building project
-#         run: npm run build
+#   
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -40,6 +43,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS }}
           aws-region: us-west-1
       - name: Copy files to the production website with the AWS CLI
-        uses: sarvesh5012/hello-composite-actions/s3bucketaction@main
+        uses: virtuecloud/Composite-actions/s3bucketmvnaction@java
         with:
           bucket_name: ${{inputs.bucket_name}}
+          jar_file_name: ${{inputs.jar_file_name}}
