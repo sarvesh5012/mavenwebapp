@@ -1,4 +1,4 @@
 #!/bin/sh
 ls
-chmod +x target/$1
-java -jar target/$1
+chmod +x target/sarvesh.jar
+java -jar target/sarvesh.jar
