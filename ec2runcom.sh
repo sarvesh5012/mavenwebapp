@@ -1,4 +1,4 @@
 #!/bin/sh
 ls
-chmod +x $1
-java -jar $1
+chmod +x target/$1
+java -jar target/$1
