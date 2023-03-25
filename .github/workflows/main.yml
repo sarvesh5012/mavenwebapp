@@ -54,6 +54,9 @@ jobs:
           bucket_name: ${{inputs.bucket_name}}
           jar_file_name: ${{inputs.jar_file_name}}
 
+  ssm-connection:
+    executor: aws-cli/default
+    steps:
       - aws-cli/setup:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS }}
