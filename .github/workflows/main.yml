@@ -9,7 +9,7 @@ on:
         type: string
 
       jar_file_name:
-        reruired: true
+        required: true
         type: string
 
       
@@ -25,7 +25,7 @@ on:
      
 jobs:
   # To build the project
-  build-tambola:
+  build-MyMaven:
     runs-on: ubuntu-latest
     steps:
       - name: Checking out code
