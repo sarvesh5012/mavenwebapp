@@ -57,6 +57,6 @@ jobs:
 
 
       - name: Executing commands on ec2
-        run: aws ssm send-command --document-name "AWS-RunRemoteScript" --targets "Key=InstanceIds,Values=[i-08f243aceca89255a]" --parameters '{"sourceType":["S3"],"sourceInfo":["{\"path\":\"https://mvnprojectbucket.s3.us-east-1.amazonaws.com/ec2runcom.sh\"}"],"commandLine":["./ec2runcom.sh"]}'
+        run: aws ssm send-command --document-name "AWS-RunRemoteScript" --targets "Key=InstanceIds,Values=['i-08f243aceca89255a']" --parameters '{"sourceType":["S3"],"sourceInfo":["{\"path\":\"https://mvnprojectbucket.s3.us-east-1.amazonaws.com/ec2runcom.sh\"}"],"commandLine":["./ec2runcom.sh"]}'
 
 
